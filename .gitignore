@@ -229,6 +229,9 @@ modules.xml
 .idea/misc.xml
 *.ipr
 
+### QueryDSL ###
+/src/main/generated
+
 ### Java ###
 # Compiled class file
 *.class
