@@ -232,6 +232,9 @@ modules.xml
 ### QueryDSL ###
 /src/main/generated
 
+### JPA Buddy
+.jpb/
+
 ### Java ###
 # Compiled class file
 *.class
