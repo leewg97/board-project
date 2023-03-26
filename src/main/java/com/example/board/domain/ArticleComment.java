@@ -15,7 +15,7 @@ import java.util.Objects;
         @Index(columnList = "createdBy")
 })
 @Entity
-public class Comment extends BaseEntity {
+public class ArticleComment extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,23 +29,28 @@ public class Comment extends BaseEntity {
     @Column(nullable = false, length = 500)
     private String content;
 
+    @Setter
+    @JoinColumn(name = "userId")
+    @ManyToOne(optional = false)
+    private UserAccount userAccount; // 유저 정보 (ID)
 
-    protected Comment() {}
+    protected ArticleComment() {}
 
-    public Comment(Article article, String content) {
+    private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;
+        this.userAccount = userAccount;
         this.content = content;
     }
 
-    public static Comment of(Article article, String content) {
-        return new Comment(article, content);
+    public static ArticleComment of(Article article, UserAccount userAccount, String content) {
+        return new ArticleComment(article, userAccount, content);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Comment comment)) return false;
-        return id != null && id.equals(comment.id);
+        if (!(o instanceof ArticleComment articleComment)) return false;
+        return id != null && id.equals(articleComment.id);
     }
 
     @Override
