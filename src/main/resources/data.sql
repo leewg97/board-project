@@ -154,7 +154,7 @@ insert into article (title, content, hashtag, created_by, modified_by, created_a
 insert into article (title, content, hashtag, created_by, modified_by, created_at, modified_at) values ('Sed vel enim sit amet nunc viverra dapibus.', 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.', 'Lincoln', 'Latia', 'Karlee', '2022-11-04 22:33:12', '2022-10-22 22:47:59');
 
 -- 댓글 300
-insert into comment (article_id, content, created_at, modified_at, created_by, modified_by) values
+insert into articleComment (article_id, content, created_at, modified_at, created_by, modified_by) values
 (49, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', '2021-03-02 22:40:04', '2021-04-27 15:38:09', 'Lind', 'Orv'),
 (108, 'Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.', '2021-06-08 04:36:02', '2022-01-25 15:35:42', 'Trstram', 'Loy'),
 (31,  'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', '2021-04-10 00:47:10', '2021-02-06 20:58:04', 'Duff', 'Early'),

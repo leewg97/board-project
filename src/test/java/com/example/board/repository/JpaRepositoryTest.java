@@ -18,14 +18,14 @@ import static org.assertj.core.api.Assertions.*;
 class JpaRepositoryTest {
 
     private final ArticleRepository articleRepository;
-    private final CommentRepository commentRepository;
+    private final ArticleCommentRepository articleCommentRepository;
 
     public JpaRepositoryTest(
             @Autowired ArticleRepository articleRepository,
-            @Autowired CommentRepository commentRepository
+            @Autowired ArticleCommentRepository articleCommentRepository
     ) {
         this.articleRepository = articleRepository;
-        this.commentRepository = commentRepository;
+        this.articleCommentRepository = articleCommentRepository;
     }
 
     @DisplayName("Select 테스트")
@@ -79,15 +79,15 @@ class JpaRepositoryTest {
         // Given
         Article article = articleRepository.findById(1L).orElseThrow();
         long previousArticle = articleRepository.count();
-        long previousComment = commentRepository.count();
-        int deletedCommentsSize = article.getComments().size();
+        long previousComment = articleCommentRepository.count();
+        int deletedCommentsSize = article.getArticleComments().size();
 
         // When
         articleRepository.delete(article);
 
         // Then
         assertThat(articleRepository.count()).isEqualTo(previousArticle - 1);
-        assertThat(commentRepository.count()).isEqualTo(previousComment - deletedCommentsSize);
+        assertThat(articleCommentRepository.count()).isEqualTo(previousComment - deletedCommentsSize);
 
     }
 
