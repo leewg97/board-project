@@ -179,7 +179,8 @@ class ArticleServiceTest {
         return Article.of(
                 createUserAccount(),
                 "title",
-                "content"
+                "content",
+                "#java"
         );
     }
 

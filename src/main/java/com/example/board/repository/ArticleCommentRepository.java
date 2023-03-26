@@ -1,7 +1,7 @@
 package com.example.board.repository;
 
 import com.example.board.domain.ArticleComment;
-import com.example.board.domain.QComment;
+import com.example.board.domain.QArticleComment;
 import com.querydsl.core.types.dsl.DateTimeExpression;
 import com.querydsl.core.types.dsl.StringExpression;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,13 +16,14 @@ import java.util.List;
 public interface ArticleCommentRepository extends
         JpaRepository<ArticleComment, Long>,
         QuerydslPredicateExecutor<ArticleComment>,
-        QuerydslBinderCustomizer<QComment> {
+        QuerydslBinderCustomizer<QArticleComment> {
 
     List<ArticleComment> findByArticle_Id(Long articleId);
+
     void deleteByIdAndUserAccount_UserId(Long articleCommentId, String userId);
 
     @Override
-    default void customize(QuerydslBindings bindings, QComment root) {
+    default void customize(QuerydslBindings bindings, QArticleComment root) {
         bindings.excludeUnlistedProperties(true);
         bindings.including(root.content, root.createdAt, root.createdBy);
         bindings.bind(root.content).first(StringExpression::containsIgnoreCase);
