@@ -1,7 +1,7 @@
 package com.example.board.controller;
 
-import com.example.board.domain.response.ArticleResponse;
-import com.example.board.domain.response.ArticleWithCommentsResponse;
+import com.example.board.dto.response.ArticleResponse;
+import com.example.board.dto.response.ArticleWithCommentsResponse;
 import com.example.board.domain.type.SearchType;
 import com.example.board.service.ArticleService;
 import com.example.board.service.PaginationService;

@@ -1,4 +1,4 @@
-package com.example.board.domain.response;
+package com.example.board.dto.response;
 
 
 import com.example.board.dto.ArticleCommentDto;
