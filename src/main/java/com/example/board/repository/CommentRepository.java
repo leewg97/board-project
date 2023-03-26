@@ -14,13 +14,12 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface CommentRepository extends
         JpaRepository<Comment, Long>,
         QuerydslPredicateExecutor<Comment>,
-        QuerydslBinderCustomizer<QComment>
-{
+        QuerydslBinderCustomizer<QComment> {
 
     @Override
     default void customize(QuerydslBindings bindings, QComment root) {
         bindings.excludeUnlistedProperties(true);
-        bindings.including(root.content,root.createdAt, root.createdBy);
+        bindings.including(root.content, root.createdAt, root.createdBy);
         bindings.bind(root.content).first(StringExpression::containsIgnoreCase);
         bindings.bind(root.createdAt).first(DateTimeExpression::eq);
         bindings.bind(root.createdBy).first(StringExpression::containsIgnoreCase);
