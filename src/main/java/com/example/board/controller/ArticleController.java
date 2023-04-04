@@ -87,19 +87,17 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
-
         return "redirect:/articles";
     }
 
     @GetMapping("/{articleId}/form")
     public String updateArticleForm(@PathVariable Long articleId, ModelMap map) {
         ArticleResponse article = ArticleResponse.from(articleService.getArticle(articleId));
-
         map.addAttribute("article", article);
         map.addAttribute("formStatus", FormStatus.UPDATE);
-
         return "articles/form";
     }
+
 
     @PostMapping("/{articleId}/form")
     public String updateArticle(
