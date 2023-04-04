@@ -30,11 +30,12 @@ public class ArticleComment extends BaseEntity {
     private String content;
 
     @Setter
-    @JoinColumn(name = "userId")
     @ManyToOne(optional = false)
+    @JoinColumn(name = "userId")
     private UserAccount userAccount; // 유저 정보 (ID)
 
-    protected ArticleComment() {}
+    protected ArticleComment() {
+    }
 
     private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;

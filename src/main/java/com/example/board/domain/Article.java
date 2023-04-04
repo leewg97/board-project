@@ -40,8 +40,8 @@ public class Article extends BaseEntity {
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
     @Setter
-    @JoinColumn(name = "userId")
     @ManyToOne(optional = false)
+    @JoinColumn(name = "userId")
     private UserAccount userAccount; // 유저 정보 (ID)
 
     protected Article() {
