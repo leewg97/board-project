@@ -41,6 +41,8 @@ public class ArticleController {
         map.addAttribute("articles", articles);
         map.addAttribute("paginationBarNumbers", barNumbers);
         map.addAttribute("searchTypes", SearchType.values());
+        map.addAttribute("searchTypeHashtag", SearchType.HASHTAG);
+
 
         return "articles/index";
     }
@@ -52,6 +54,7 @@ public class ArticleController {
         map.addAttribute("article", article);
         map.addAttribute("articleComments", article.articleCommentsResponse());
         map.addAttribute("totalCount", articleService.getArticleCount());
+        map.addAttribute("searchTypeHashtag", SearchType.HASHTAG);
 
         return "articles/detail";
     }
@@ -87,19 +90,17 @@ public class ArticleController {
             ArticleRequest articleRequest
     ) {
         articleService.saveArticle(articleRequest.toDto(boardPrincipal.toDto()));
-
         return "redirect:/articles";
     }
 
     @GetMapping("/{articleId}/form")
     public String updateArticleForm(@PathVariable Long articleId, ModelMap map) {
         ArticleResponse article = ArticleResponse.from(articleService.getArticle(articleId));
-
         map.addAttribute("article", article);
         map.addAttribute("formStatus", FormStatus.UPDATE);
-
         return "articles/form";
     }
+
 
     @PostMapping("/{articleId}/form")
     public String updateArticle(
