@@ -1,6 +1,5 @@
 package com.example.board.controller;
 
-import com.example.board.config.SecurityConfig;
 import com.example.board.config.TestSecurityConfig;
 import com.example.board.domain.constant.FormStatus;
 import com.example.board.domain.constant.SearchType;
@@ -29,7 +28,6 @@ import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.security.test.context.support.WithUserDetails;
 import org.springframework.test.web.servlet.MockMvc;
 
-
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
@@ -37,7 +35,8 @@ import java.util.Set;
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.BDDMockito.*;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @DisplayName("View 컨트롤러 - 게시글")
@@ -47,8 +46,10 @@ class ArticleControllerTest {
 
     private final MockMvc mockMvc;
     private final FormDataEncoder formDataEncoder;
-    @MockBean private ArticleService articleService;
-    @MockBean private PaginationService paginationService;
+    @MockBean
+    private ArticleService articleService;
+    @MockBean
+    private PaginationService paginationService;
 
     ArticleControllerTest(@Autowired MockMvc mockMvc, @Autowired FormDataEncoder formDataEncoder) {
         this.mockMvc = mockMvc;
@@ -198,6 +199,7 @@ class ArticleControllerTest {
         then(articleService).should().getHashtags();
         then(paginationService).should().getPaginationBarNumbers(anyInt(), anyInt());
     }
+
     @DisplayName("[view][GET] 게시글 해시태그 검색 페이지 - 정상 호출, 해시태그 입력")
     @Test
     public void givenHashtag_whenRequestingArticleSearchHashtagView_thenReturnsArticleSearchHashtagView() throws Exception {
@@ -333,6 +335,14 @@ class ArticleControllerTest {
         then(articleService).should().deleteArticle(articleId, userId);
     }
 
+    private ArticleDto createArticleDto() {
+        return ArticleDto.of(
+                createUserAccountDto(),
+                "title",
+                "content",
+                "#java"
+        );
+    }
 
     private ArticleWithCommentsDto createArticleWithCommentsDto() {
         return ArticleWithCommentsDto.of(
@@ -348,6 +358,7 @@ class ArticleControllerTest {
                 "lee"
         );
     }
+
     private UserAccountDto createUserAccountDto() {
         return UserAccountDto.of(
                 "lee",

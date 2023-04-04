@@ -36,6 +36,7 @@ public record UserAccountDto(
                 entity.getModifiedBy()
         );
     }
+
     public UserAccount toEntity() {
         return UserAccount.of(
                 userId,

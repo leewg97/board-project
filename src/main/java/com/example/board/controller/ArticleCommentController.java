@@ -1,7 +1,6 @@
 package com.example.board.controller;
 
 import com.example.board.dto.request.ArticleCommentRequest;
-import com.example.board.dto.UserAccountDto;
 import com.example.board.dto.security.BoardPrincipal;
 import com.example.board.service.ArticleCommentService;
 import lombok.RequiredArgsConstructor;

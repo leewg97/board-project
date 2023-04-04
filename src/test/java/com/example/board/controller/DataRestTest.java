@@ -30,7 +30,7 @@ public class DataRestTest {
 
     @DisplayName("[api] 게시글 리스트 조회")
     @Test
-    void  givenNoting_whenRequestingArticle_thenReturnArticlesJsonResponse() throws Exception {
+    void givenNoting_whenRequestingArticle_thenReturnArticlesJsonResponse() throws Exception {
         // Given
 
         // When & Then
@@ -41,7 +41,7 @@ public class DataRestTest {
 
     @DisplayName("[api] 게시글 단건 조회")
     @Test
-    void  givenNoting_whenRequestingArticle_thenReturnArticleJsonResponse() throws Exception {
+    void givenNoting_whenRequestingArticle_thenReturnArticleJsonResponse() throws Exception {
         // Given
 
         // When & Then
@@ -52,7 +52,7 @@ public class DataRestTest {
 
     @DisplayName("[api] 게시글 -> 댓글 리스트 조회")
     @Test
-    void  givenNoting_whenRequestingCommentsFromArticle_thenReturnCommentsJsonResponse() throws Exception {
+    void givenNoting_whenRequestingCommentsFromArticle_thenReturnCommentsJsonResponse() throws Exception {
         // Given
 
         // When & Then
@@ -63,7 +63,7 @@ public class DataRestTest {
 
     @DisplayName("[api] 댓글 리스트 조회")
     @Test
-    void  givenNoting_whenRequestingComments_thenReturnCommentsJsonResponse() throws Exception {
+    void givenNoting_whenRequestingComments_thenReturnCommentsJsonResponse() throws Exception {
         // Given
 
         // When & Then
@@ -74,7 +74,7 @@ public class DataRestTest {
 
     @DisplayName("[api] 댓글 단건 조회")
     @Test
-    void  givenNoting_whenRequestingComment_thenReturnCommentJsonResponse() throws Exception {
+    void givenNoting_whenRequestingComment_thenReturnCommentJsonResponse() throws Exception {
         // Given
 
         // When & Then
