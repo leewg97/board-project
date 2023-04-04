@@ -2,6 +2,7 @@ package com.example.board.repository.querydsl;
 
 import com.example.board.domain.Article;
 import com.example.board.domain.QArticle;
+import com.example.board.domain.QHashtag;
 import com.querydsl.jpa.JPQLQuery;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;

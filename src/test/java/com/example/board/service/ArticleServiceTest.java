@@ -8,7 +8,6 @@ import com.example.board.dto.ArticleDto;
 import com.example.board.dto.ArticleWithCommentsDto;
 import com.example.board.dto.HashtagDto;
 import com.example.board.dto.UserAccountDto;
-import com.example.board.repository.ArticleCommentRepository;
 import com.example.board.repository.ArticleRepository;
 import com.example.board.repository.HashtagRepository;
 import com.example.board.repository.UserAccountRepository;
@@ -32,8 +31,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.BDDMockito.*;
 
