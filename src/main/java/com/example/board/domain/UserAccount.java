@@ -16,7 +16,7 @@ import java.util.Objects;
         @Index(columnList = "createdBy")
 })
 @Entity
-public class UserAccount extends BaseEntity {
+public class UserAccount extends AuditingFields {
     @Id
     @Column(length = 50)
     private String userId;
@@ -54,8 +54,8 @@ public class UserAccount extends BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof UserAccount userAccount)) return false;
-        return userId != null && userId.equals(userAccount.userId);
+        if (!(o instanceof UserAccount that)) return false;
+        return userId != null && userId.equals(that.getUserId());
     }
     @Override
     public int hashCode() {

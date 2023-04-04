@@ -15,7 +15,7 @@ import java.util.Objects;
         @Index(columnList = "createdBy")
 })
 @Entity
-public class ArticleComment extends BaseEntity {
+public class ArticleComment extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,12 +30,11 @@ public class ArticleComment extends BaseEntity {
     private String content;
 
     @Setter
-    @ManyToOne(optional = false)
     @JoinColumn(name = "userId")
+    @ManyToOne(optional = false)
     private UserAccount userAccount; // 유저 정보 (ID)
 
-    protected ArticleComment() {
-    }
+    protected ArticleComment() {}
 
     private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;
@@ -50,8 +49,8 @@ public class ArticleComment extends BaseEntity {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof ArticleComment articleComment)) return false;
-        return id != null && id.equals(articleComment.id);
+        if (!(o instanceof ArticleComment that)) return false;
+        return id != null && id.equals(that.getId());
     }
 
     @Override
