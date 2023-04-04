@@ -62,12 +62,12 @@ public class Article extends AuditingFields {
     public boolean equals(Object o) {   // 영속화 되지 않은 엔티티는 모두 동등성 결과를 탈락한다
         if (this == o) return true;
         if (!(o instanceof Article that)) return false;
-        return id != null && id.equals(that.getId());
+        return this.getId() != null && this.getId().equals(that.getId());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id);
+        return Objects.hash(this.getId());
     }
 
 }
