@@ -54,6 +54,7 @@ class ArticleServiceTest {
         assertThat(articles).isEmpty();
         then(articleRepository).should().findAll(pageable);
     }
+
     @DisplayName("검색어와 함께 게시글을 검색하면, 게시글 페이지를 반환한다.")
     @Test
     void givenSearchParameters_whenSearchingArticles_thenReturnsArticlePage() {
@@ -68,6 +69,7 @@ class ArticleServiceTest {
         assertThat(articles).isEmpty();
         then(articleRepository).should().findByTitleContaining(searchKeyword, pageable);
     }
+
     @DisplayName("검색어 없이 게시글을 해시태그 검색하면, 빈 페이지를 반환한다.")
     @Test
     void givenNoSearchParameters_whenSearchingArticlesViaHashtag_thenReturnsEmptyPage() {
@@ -79,6 +81,7 @@ class ArticleServiceTest {
         assertThat(articles).isEqualTo(Page.empty(pageable));
         then(articleRepository).shouldHaveNoInteractions();
     }
+
     @DisplayName("게시글을 해시태그 검색하면, 게시글 페이지를 반환한다.")
     @Test
     void givenHashtag_whenSearchingArticlesViaHashtag_thenReturnsArticlesPage() {
@@ -162,6 +165,7 @@ class ArticleServiceTest {
                 .hasMessage("게시글이 없습니다 - articleId: " + articleId);
         then(articleRepository).should().findById(articleId);
     }
+
     @DisplayName("게시글 정보를 입력하면, 게시글을 생성한다.")
     @Test
     void givenArticleInfo_whenSavingArticle_thenSavesArticle() {
@@ -198,6 +202,7 @@ class ArticleServiceTest {
         then(articleRepository).should().getReferenceById(dto.id());
         then(userAccountRepository).should().getReferenceById(dto.userAccountDto().userId());
     }
+
     @DisplayName("없는 게시글의 수정 정보를 입력하면, 경고 로그를 찍고 아무 것도 하지 않는다.")
     @Test
     void givenNonexistentArticleInfo_whenUpdatingArticle_thenLogsWarningAndDoesNothing() {
@@ -226,6 +231,7 @@ class ArticleServiceTest {
         // Then
         then(articleRepository).should().deleteByIdAndUserAccount_UserId(articleId, userId);
     }
+
     @DisplayName("게시글 수를 조회하면, 게시글 수를 반환한다")
     @Test
     void givenNothing_whenCountingArticles_thenReturnsArticleCount() {
@@ -238,6 +244,7 @@ class ArticleServiceTest {
         assertThat(actual).isEqualTo(expected);
         then(articleRepository).should().count();
     }
+
     @DisplayName("해시태그를 조회하면, 유니크 해시태그 리스트를 반환한다")
     @Test
     void givenNothing_whenCalling_thenReturnsHashtags() {

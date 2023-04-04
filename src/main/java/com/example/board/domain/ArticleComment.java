@@ -34,7 +34,8 @@ public class ArticleComment extends AuditingFields {
     @ManyToOne(optional = false)
     private UserAccount userAccount; // 유저 정보 (ID)
 
-    protected ArticleComment() {}
+    protected ArticleComment() {
+    }
 
     private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;

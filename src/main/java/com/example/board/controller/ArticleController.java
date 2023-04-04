@@ -1,11 +1,10 @@
 package com.example.board.controller;
 
 import com.example.board.domain.constant.FormStatus;
-import com.example.board.dto.UserAccountDto;
+import com.example.board.domain.constant.SearchType;
 import com.example.board.dto.request.ArticleRequest;
 import com.example.board.dto.response.ArticleResponse;
 import com.example.board.dto.response.ArticleWithCommentsResponse;
-import com.example.board.domain.constant.SearchType;
 import com.example.board.dto.security.BoardPrincipal;
 import com.example.board.service.ArticleService;
 import com.example.board.service.PaginationService;

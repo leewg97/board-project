@@ -57,6 +57,7 @@ public class UserAccount extends AuditingFields {
         if (!(o instanceof UserAccount that)) return false;
         return userId != null && userId.equals(that.getUserId());
     }
+
     @Override
     public int hashCode() {
         return Objects.hash(userId);
