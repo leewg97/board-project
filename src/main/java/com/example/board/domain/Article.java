@@ -18,7 +18,7 @@ import java.util.Set;
         @Index(columnList = "createdBy")
 })
 @Entity
-public class Article extends BaseEntity {
+public class Article extends AuditingFields {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,8 +40,8 @@ public class Article extends BaseEntity {
     private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
     @Setter
-    @ManyToOne(optional = false)
     @JoinColumn(name = "userId")
+    @ManyToOne(optional = false)
     private UserAccount userAccount; // 유저 정보 (ID)
 
     protected Article() {
@@ -61,8 +61,8 @@ public class Article extends BaseEntity {
     @Override
     public boolean equals(Object o) {   // 영속화 되지 않은 엔티티는 모두 동등성 결과를 탈락한다
         if (this == o) return true;
-        if (!(o instanceof Article article)) return false;
-        return id != null && id.equals(article.id);
+        if (!(o instanceof Article that)) return false;
+        return id != null && id.equals(that.getId());
     }
 
     @Override
