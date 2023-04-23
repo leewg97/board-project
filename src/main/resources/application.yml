@@ -1,11 +1,8 @@
 spring:
   datasource:
-#    driver-class-name: com.mysql.cj.jdbc.Driver
-#    url: jdbc:mysql://127.0.0.1:3308/board?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
-#    url: jdbc:mysql://127.0.0.1:3306/board?zeroDateTimeBehavior=convertToNull&characterEncoding=UTF-8&serverTimezone=Asia/Seoul
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/board
-    username: postgres
+    username: lee
     password: 1234
   jpa:
     defer-datasource-initialization: true
@@ -21,6 +18,22 @@ spring:
     base-path: /api
     detection-strategy: annotated
   thymeleaf3.decoupled-logic: true
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: ${KAKAO_OAUTH_CLIENT_ID}
+            client-secret: ${KAKAO_OAUTH_CLIENT_SECRET}
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/kakao"
+            client-authentication-method: POST
+        provider:
+          kakao:
+            authorization-uri: https://kauth.kakao.com/oauth/authorize
+            token-uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user-name-attribute: id
 
 debug: false
 management.endpoints.web.exposure.include: "*"
